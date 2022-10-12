@@ -1,0 +1,19 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/grading-db
+    username: postgres
+    password: postgres
+    driverClassName: org.postgresql.Driver
+    initialization-mode: always
+  sql:
+    init:
+      mode: always
+      data-locations: classpath:testdata-postgres.sql
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    defer-datasource-initialization: true
+    generate-ddl: true
+    open-in-view: false
+    show_sql: true
+    hibernate:
+      ddl-auto: update
