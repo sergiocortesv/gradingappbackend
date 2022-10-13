@@ -25,6 +25,9 @@ public class Grade {
     @Column(nullable = false)
     private Integer arrangement;
 
+    @Column(nullable = true)
+    private String cssColor;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "grading_system_id", updatable = false, insertable = false)
     @JsonInclude(value= JsonInclude.Include.NON_EMPTY, content= JsonInclude.Include.NON_NULL)

@@ -16,5 +16,6 @@ public class Grade {
     private String name;
     private Integer arrangement;
     private GradingSystem gradingSystem;
+    private String cssColor;
 
 }
