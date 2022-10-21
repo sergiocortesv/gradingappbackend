@@ -12,4 +12,7 @@ public interface ItemRepository extends CrudRepository<Item, Long> {
     @Query("SELECT i FROM Item i LEFT JOIN FETCH i.grade WHERE i.category.id=:category_id")
     public List<Item> findItemsByCategory(@Param("category_id") Long category_id);
 
+    @Query("SELECT i FROM Item i WHERE i.category.id=:category_id and lower(i.name) = lower(:item_name)")
+    public List<Item> findItemsByNameAndCategory(@Param("category_id") Long category_id,
+                                                 @Param("item_name") String item_name);
 }

@@ -10,6 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @SpringBootTest
 public class ItemRepositoryTest {
@@ -46,5 +47,12 @@ public class ItemRepositoryTest {
         Item item = new Item();
         item.setId(1L);
         itemRepository.delete(item);
+    }
+
+    @Test
+    public void findItemByName_duplicated() throws Exception{
+        List<Item> items = itemRepository.findItemsByNameAndCategory(1L, "arms");
+        assertNotNull(items);
+        assertEquals(1, items.size());
     }
 }

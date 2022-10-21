@@ -28,6 +28,10 @@ public class ItemGradeService {
     }
 
     public Item saveGradedItem(Item gradedItem){
+        List<Item> duplicatedItems = itemRepository.findItemsByNameAndCategory(gradedItem.getCategory().getId(), gradedItem.getName());
+        if(duplicatedItems.size() > 0){
+            throw new IllegalArgumentException("Duplicated Item");
+        }
         return itemRepository.save(gradedItem);
     }
 
