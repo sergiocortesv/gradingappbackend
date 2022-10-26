@@ -10,6 +10,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Null;
+import java.util.List;
 
 @Getter
 @Setter
@@ -23,5 +24,7 @@ public class Item {
     private Category category;
     @Valid
     private Grade grade;
+
+    private List<Tag> tags;
 
 }

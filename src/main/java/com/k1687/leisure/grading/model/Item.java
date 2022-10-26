@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name="item")
@@ -27,5 +28,13 @@ public class Item {
    @ManyToOne(fetch = FetchType.LAZY)
    @JsonInclude(value= JsonInclude.Include.NON_NULL, content= JsonInclude.Include.NON_NULL)
    private Grade grade;
+
+   @ManyToMany(fetch = FetchType.LAZY)
+   @JoinTable(
+           name="item_tag",
+           joinColumns = @JoinColumn(name = "item_id"),
+           inverseJoinColumns = @JoinColumn(name = "tag_id")
+   )
+   private Set<Tag> tags;
 
 }

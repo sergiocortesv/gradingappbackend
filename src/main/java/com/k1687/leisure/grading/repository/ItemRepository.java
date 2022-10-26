@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface ItemRepository extends CrudRepository<Item, Long> {
 
-    @Query("SELECT i FROM Item i LEFT JOIN FETCH i.grade WHERE i.category.id=:category_id")
+    @Query("SELECT distinct(i) FROM Item i LEFT JOIN FETCH i.grade LEFT JOIN FETCH i.tags WHERE i.category.id=:category_id")
     public List<Item> findItemsByCategory(@Param("category_id") Long category_id);
 
     @Query("SELECT i FROM Item i WHERE i.category.id=:category_id and lower(i.name) = lower(:item_name)")

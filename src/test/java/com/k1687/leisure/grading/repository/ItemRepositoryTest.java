@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -22,6 +23,9 @@ public class ItemRepositoryTest {
     public void findItemsByCategoryId_multipleItems(){
         List<Item> items = itemRepository.findItemsByCategory(1L);
         assertEquals(5, items.size());
+
+        List<Item> filteredItem = items.stream().filter(i -> i.getId() == 3L).collect(Collectors.toList());
+        assertEquals(2, filteredItem.get(0).getTags().size());
     }
 
     @Test

@@ -79,4 +79,15 @@ public class CategoryControllerTest {
         assertEquals(HttpStatus.BAD_REQUEST.value(), result.getResponse().getStatus());
     }
 
+    @Test
+    public void getItemsByCategory_valid_category() throws Exception{
+        RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/api/category/1/items")
+                .accept(MediaType.APPLICATION_JSON);
+
+        MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+        System.out.println("Contents");
+        System.out.println(result.getResponse().getStatus());
+
+    }
+
 }
