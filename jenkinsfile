@@ -1,0 +1,12 @@
+piepeline{
+    agent any
+
+    stages{
+        stage('Build'){
+            steps{
+                echo 'building'
+            }
+        }
+    }
+
+}
