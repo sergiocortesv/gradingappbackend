@@ -16,6 +16,7 @@ public class Item {
 
    @Id
    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "item_seq")
+   @SequenceGenerator(name="item_seq", sequenceName = "item_seq", allocationSize = 1)
    private Long id;
 
    @Column(nullable=false, length=96)

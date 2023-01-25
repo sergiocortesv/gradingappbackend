@@ -5,6 +5,8 @@ import com.k1687.leisure.grading.model.Tag;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.jdbc.Sql;
+import org.testcontainers.junit.jupiter.Testcontainers;
 
 import java.util.List;
 
@@ -12,6 +14,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @SpringBootTest
+@Sql(executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD,scripts = {"/testdata-postgres.sql"})
+@Sql(executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD,scripts = {"/dropdata-postgres.sql"})
+@Testcontainers
 public class TagRepositoryTest {
 
     @Autowired
